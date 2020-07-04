@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="root" style="-fx-background-color: #cccccc" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View_Controller.MainScreenController">
+    <BorderPane>
+        <top>
+            <Label style="-fx-text-fill: #2e257d;" text="Inventory Management Screen">
+            <BorderPane.margin>
+               <Insets left="25.0" top="16.0" />
+            </BorderPane.margin>
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font></Label>
+        </top>
+        <center>
+            <HBox minHeight="300" minWidth="920" spacing="30.0">
+                <VBox style="-fx-border-color: #636263;">
+                    <HBox minHeight="52.0" minWidth="460">
+                        <HBox.margin>
+                            <Insets left="10.0" />
+                        </HBox.margin>
+                        <Label text="Parts">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                        </Label>
+                        <Button onAction="#onSearchParts" prefWidth="70" style="-fx-border-color: black;" text="Search">
+                     <HBox.margin>
+                        <Insets left="143.0" top="5.0" />
+                     </HBox.margin></Button>
+                        <TextField fx:id="searchTermParts" style="-fx-border-color: black;">
+                     <HBox.margin>
+                        <Insets left="13.0" top="9.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets top="3.0" />
+                     </padding></TextField>
+                    </HBox>
+                    <TableView fx:id="partTableView" prefHeight="200.0" prefWidth="300.0">
+                        <columns>
+                            <TableColumn prefWidth="109.0" text="Part ID" fx:id="partIdCol">
+                            </TableColumn>
+                            <TableColumn prefWidth="109.0" text="Part Name" fx:id="partNameCol">
+                            </TableColumn>
+                            <TableColumn prefWidth="109.0" text="Inventory Level" fx:id="partStockCol">
+                            </TableColumn>
+                            <TableColumn prefWidth="120.0" text="Price/Cost per Unit" fx:id="partPriceCol">
+                            </TableColumn>
+                        </columns>
+                  <VBox.margin>
+                     <Insets left="6.0" right="6.0" />
+                  </VBox.margin>
+                    </TableView>
+                        <HBox>
+                            <Button onAction="#addModifyPartScene" prefWidth="80" style="-fx-border-color: black;" text="Add">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="135.0" />
+                     </HBox.margin></Button>
+                            <Button onAction="#addModifyPartScene" prefWidth="80" style="-fx-border-color: black;" text="Modify">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin></Button>
+                            <Button onAction="#onDeletePart" prefWidth="80" style="-fx-border-color: black;" text="Delete">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin></Button>
+                  <VBox.margin>
+                     <Insets top="10.0" />
+                  </VBox.margin>
+                        </HBox>
+                </VBox>
+                <VBox style="-fx-border-color: #636263;">
+                    <HBox minHeight="54.0" minWidth="460">
+                        <HBox.margin>
+                            <Insets left="10.0" />
+                        </HBox.margin>
+                        <Label text="Products">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </HBox.margin>
+                        </Label>
+                        <Button onAction="#onSearchProducts" prefWidth="70" style="-fx-border-color: black;" text="Search">
+                            <HBox.margin>
+                                <Insets left="126.0" top="5.0" />
+                            </HBox.margin></Button>
+                        <TextField fx:id="searchTermProducts" style="-fx-border-color: black;">
+                            <HBox.margin>
+                                <Insets left="13.0" top="9.0" />
+                            </HBox.margin>
+                            <padding>
+                                <Insets top="3.0" />
+                            </padding></TextField>
+                    </HBox>
+                    <TableView fx:id="productsTableView" prefHeight="200.0" prefWidth="300.0">
+                        <columns>
+                            <TableColumn prefWidth="109.0" text="Product ID" fx:id="productIdCol">
+                            </TableColumn>
+                            <TableColumn prefWidth="109.0" text="Product Name" fx:id="productNameCol">
+                            </TableColumn>
+                            <TableColumn prefWidth="109.0" text="Inventory Level" fx:id="productStockCol">
+                            </TableColumn>
+                            <TableColumn prefWidth="120.0" text="Price per Unit" fx:id="productPriceCol">
+                            </TableColumn>
+                        </columns>
+                        <VBox.margin>
+                            <Insets left="6.0" right="6.0" />
+                        </VBox.margin>
+                    </TableView>
+                    <HBox>
+                        <Button prefWidth="80" style="-fx-border-color: black;" text="Add" onAction="#addModifyProductScene">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="135.0" />
+                            </HBox.margin></Button>
+                        <Button prefWidth="80" style="-fx-border-color: black;" text="Modify" onAction="#addModifyProductScene">
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin></Button>
+                        <Button prefWidth="80" style="-fx-border-color: black;" text="Delete" onAction="#onDeleteProduct">
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin></Button>
+                  <VBox.margin>
+                     <Insets top="10.0" />
+                  </VBox.margin>
+                    </HBox>
+                </VBox>
+            <BorderPane.margin>
+               <Insets left="25.0" right="25.0" top="25.0" />
+            </BorderPane.margin>
+            </HBox>
+        </center>
+        <bottom>
+            <Button prefWidth="80" style="-fx-border-color: black;" text="Exit" BorderPane.alignment="BOTTOM_CENTER" onAction="#exitProgram">
+            <BorderPane.margin>
+               <Insets bottom="4.0" left="708.0" top="10.0" />
+            </BorderPane.margin></Button>
+        </bottom>
+    </BorderPane>
+</AnchorPane>

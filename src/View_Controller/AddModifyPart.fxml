@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="355.0" prefWidth="400.0" style="-fx-background-color: #cccccc;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View_Controller.AddModifyPartController">
+    <children>
+        <HBox layoutX="17.0" layoutY="14.0" prefHeight="48.0" prefWidth="367.0">
+            <children>
+                <Label fx:id="partTitle" text="Add Part" textFill="#0900b5">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                    </HBox.margin>
+                </Label>
+                <fx:define>
+                    <ToggleGroup fx:id="togglePartType" />
+                </fx:define>
+                <RadioButton fx:id="inHouseRadio" onAction="#changePartType" selected="true" text="In-House" toggleGroup="$togglePartType">
+                    <HBox.margin>
+                        <Insets left="36.0" top="10.0" />
+                    </HBox.margin>
+                </RadioButton>
+                <RadioButton fx:id= "outsourcedRadio" onAction="#changePartType" text="Outsourced" toggleGroup="$togglePartType">
+                    <HBox.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </HBox.margin>
+                </RadioButton>
+            </children>
+        </HBox>
+        <HBox layoutX="8.0" layoutY="287.0" prefHeight="35.0" prefWidth="385.0">
+            <children>
+                <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="60.0" text="Save" onAction="#savePart">
+                    <HBox.margin>
+                        <Insets left="200.0" />
+                    </HBox.margin>
+                </Button>
+                <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onCancel" prefWidth="60.0" text="Cancel">
+                    <HBox.margin>
+                        <Insets left="23.0" />
+                    </HBox.margin>
+                </Button>
+            </children></HBox>
+        <VBox layoutX="29.0" layoutY="61.0" prefHeight="248.0" prefWidth="104.0">
+            <children>
+                <Label text="ID">
+                    <VBox.margin>
+                        <Insets top="4.0" />
+                    </VBox.margin>
+                </Label>
+                <Label text="Name">
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin>
+                </Label>
+                <Label text="Inv">
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin>
+                </Label>
+                <Label text="Price/Cost">
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin>
+                </Label>
+                <Label text="Max">
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin>
+                </Label>
+                <Label fx:id="machineIdLabel" text="Machine ID">
+                    <VBox.margin>
+                        <Insets top="22.0" />
+                    </VBox.margin>
+                </Label>
+                <Label fx:id="companyNameLabel" text="Company Name">
+                    <VBox.margin>
+                        <Insets top="-17.0" />
+                    </VBox.margin>
+                </Label>
+            </children>
+        </VBox>
+        <TextField fx:id="partIdTextField" layoutX="140.0" layoutY="63.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="128.0" promptText="Auto Gen - Disabled" />
+        <TextField fx:id="partNameTextField" layoutX="140.0" layoutY="101.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="128.0" promptText="Part Name" />
+        <TextField fx:id="partStockTextField" layoutX="140.0" layoutY="138.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="128.0" promptText="Inv" />
+        <TextField fx:id="partPriceTextField" layoutX="140.0" layoutY="175.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="128.0" promptText="Price/Cost" />
+        <TextField fx:id="partMaxTextField" layoutX="140.0" layoutY="211.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="75.0" promptText="Max" />
+        <TextField fx:id="machineIdTextField" layoutX="140.0" layoutY="247.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="128.0" promptText="Machine ID" />
+        <TextField fx:id="companyNameTextField" layoutX="140.0" layoutY="247.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="128.0" promptText="Comp Name" />
+        <Label layoutX="228.0" layoutY="216.0" text="Min" />
+        <TextField fx:id="partMinTextField" layoutX="260.0" layoutY="211.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="75.0" promptText="Min" />
+    </children>
+</AnchorPane>
