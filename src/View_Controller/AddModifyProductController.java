@@ -201,9 +201,8 @@ public class AddModifyProductController {
                 Product newProduct = new Product(productParts, id, name, price, stock, min, max);
                 Inventory.addProduct(newProduct);
             }
+            returnToHomeScreen(event);
         }
-
-        returnToHomeScreen(event);
     }
 
     public void onSearchParts() {
@@ -216,7 +215,17 @@ public class AddModifyProductController {
         } else {
             results = Inventory.lookupPart(term);
         }
-        allPartsTableView.setItems(results);
+
+        if (results.size() < 1 || term.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("No Results");
+            alert.setHeaderText("No Results Found");
+            alert.setContentText("Either no results were found for the search term or a blank search term was entered, please try again. List is being reset.");
+            alert.showAndWait();
+            allPartsTableView.setItems(Inventory.getAllParts());
+        } else {
+            allPartsTableView.setItems(results);
+        }
 
     }
 

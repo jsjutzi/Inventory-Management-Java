@@ -1,9 +1,8 @@
 package View_Controller;
 
-import Model.InHousePart;
+import Model.InHouse;
 import Model.Inventory;
-import Model.OutsourcedPart;
-import Model.Part;
+import Model.Outsourced;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
@@ -13,7 +12,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -67,7 +65,7 @@ public class AddModifyPartController {
 
     private NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.US);
 
-    public void loadSelectedInHousePart(InHousePart part, int index) {
+    public void loadSelectedInHousePart(InHouse part, int index) {
         // Indicate Modify Screen
         isModifyScreen = true;
         modifyIndex = index;
@@ -86,7 +84,7 @@ public class AddModifyPartController {
         machineIdTextField.setText(Integer.toString(part.getMachineId()));
     }
 
-    public void loadSelectedOutsourcedPart(OutsourcedPart part, int index) {
+    public void loadSelectedOutsourcedPart(Outsourced part, int index) {
         // Indicate Modify Screen
         isModifyScreen = true;
         modifyIndex = index;
@@ -157,7 +155,7 @@ public class AddModifyPartController {
         if (showInHousePart.get()) {
             // Add or Modify in house part
             int machineId = Integer.parseInt(machineIdTextField.getText());
-            InHousePart newPart = new InHousePart(id, name, price, stock, min, max, machineId);
+            InHouse newPart = new InHouse(id, name, price, stock, min, max, machineId);
             if (isModifyScreen) {
                 Inventory.updatePart(modifyIndex, newPart);
             } else {
@@ -166,7 +164,7 @@ public class AddModifyPartController {
         } else {
             // Add or Modify outsourced part
             String companyName = companyNameTextField.getText();
-            OutsourcedPart newPart = new OutsourcedPart(id, name, price, stock, min, max, companyName);
+            Outsourced newPart = new Outsourced(id, name, price, stock, min, max, companyName);
             if (isModifyScreen) {
                 Inventory.updatePart(modifyIndex, newPart);
             } else {

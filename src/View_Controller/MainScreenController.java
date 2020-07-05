@@ -1,6 +1,5 @@
 package View_Controller;
 import Model.*;
-import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -114,10 +113,10 @@ public class MainScreenController {
             int index = partTableView.getSelectionModel().getSelectedIndex();
 
             if (classType.equals("OutsourcedPart")) {
-                OutsourcedPart part = (OutsourcedPart) partTableView.getSelectionModel().getSelectedItem();
+                Outsourced part = (Outsourced) partTableView.getSelectionModel().getSelectedItem();
                 controller.loadSelectedOutsourcedPart(part, index);
             } else {
-                InHousePart part = (InHousePart) partTableView.getSelectionModel().getSelectedItem();
+                InHouse part = (InHouse) partTableView.getSelectionModel().getSelectedItem();
                 controller.loadSelectedInHousePart(part, index);
             }
         }
@@ -162,8 +161,17 @@ public class MainScreenController {
         } else {
             results = Inventory.lookupPart(term);
         }
-        partTableView.setItems(results);
 
+        if (results.size() < 1) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("No Results");
+            alert.setHeaderText("No Results Found");
+            alert.setContentText("Either no results were found for the search term or you have entered a blank search term, please try again. List is being reset.");
+            alert.showAndWait();
+            partTableView.setItems(Inventory.getAllParts());
+        } else {
+            partTableView.setItems(results);
+        }
     }
 
     public void onSearchProducts() {
@@ -171,15 +179,22 @@ public class MainScreenController {
         boolean isNumeric = Inventory.isInteger(term);
         ObservableList<Product> results;
 
-        System.out.println(term);
-        System.out.println(isNumeric);
-
         if (isNumeric) {
             results = Inventory.lookupProduct(Integer.parseInt(term));
         } else {
             results = Inventory.lookupProduct(term);
         }
-        productsTableView.setItems(results);
+
+        if (results.size() < 1 || term.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("No Results");
+            alert.setHeaderText("No Results Found");
+            alert.setContentText("Either no results were found for the search term or you have entered a blank search term, please try again. List is being reset.");
+            alert.showAndWait();
+            productsTableView.setItems(Inventory.getAllProducts());
+        } else {
+            productsTableView.setItems(results);
+        }
     }
 
     public void addModifyProductScene(ActionEvent event) throws IOException {
