@@ -103,7 +103,7 @@ public class AddModifyProductController {
         productStock.setText(Integer.toString(product.getStock()));
         productPrice.setText(currencyFormat.format((product.getPrice())));
         productMin.setText(Integer.toString(product.getMin()));
-        productMax.setText(Integer.toString(product.getMin()));
+        productMax.setText(Integer.toString(product.getMax()));
 
         productPartsTableView.setItems(product.getAllAssociatedParts());
         productParts.addAll(product.getAllAssociatedParts());
@@ -189,7 +189,7 @@ public class AddModifyProductController {
             double price = Double.parseDouble(productPrice.getText().replace("$", ""));
             int min = Integer.parseInt(productMin.getText());
             int max = Integer.parseInt(productMax.getText());
-
+            System.out.println(max);
             if (isModifyScreen) {
                 selectedProduct.setName(name);
                 selectedProduct.setStock(stock);

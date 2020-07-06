@@ -112,7 +112,7 @@ public class MainScreenController {
             String classType =  partTableView.getSelectionModel().getSelectedItem().getClass().getSimpleName();
             int index = partTableView.getSelectionModel().getSelectedIndex();
 
-            if (classType.equals("OutsourcedPart")) {
+            if (classType.equals("Outsourced")) {
                 Outsourced part = (Outsourced) partTableView.getSelectionModel().getSelectedItem();
                 controller.loadSelectedOutsourcedPart(part, index);
             } else {
